@@ -3,15 +3,22 @@ var flipCard = document.querySelector('.flip-clock');
 
 const countToDate = new Date("2022-11-11");
 var previousTimeBetweenDates;
-setInterval(() => {
-    var currentDate = new Date();
-    var timeBetweenDates = Math.ceil((countToDate - currentDate)/1000);
+console.log(countToDate- (new Date()));
 
-    if(previousTimeBetweenDates !== timeBetweenDates){
-        flipAllCards(timeBetweenDates)
-    }
-    previousTimeBetweenDates = timeBetweenDates;
-},250);
+if((countToDate- (new Date()))<0) {
+    flipAllCards(0)
+}else{
+    setInterval(() => {
+        var currentDate = new Date();
+        var timeBetweenDates = Math.ceil((countToDate - currentDate)/1000);
+    
+        if(previousTimeBetweenDates !== timeBetweenDates){
+            flipAllCards(timeBetweenDates)
+        }
+        previousTimeBetweenDates = timeBetweenDates;
+    },250);
+}
+
 
 function flipAllCards(time) {
 
